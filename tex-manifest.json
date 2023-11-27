@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tarkenag/tex-schemas/v0/manifest.json",
+  "name": "analises-da-proposta-q6j2m",
+  "baseUrl": "http://localhost:7801",
+  "modules": [
+    {
+      "key": "0",
+      "urlPath": "/",
+      "location": "workflow.ticket.type.credit-request.detail",
+      "attributes": {
+        "entryLabel": "Análises",
+        "description": "Análises da proposta"
+      },
+      "queryParameters": {
+        "ticket": "{{ ticketId }}"
+      }
+    }
+  ],
+  "private": true,
+  "version": "0.0.2",
+  "apiVersion": "0.0.1",
+  "vendorName": "Tarken Extensions MVP",
+  "description": "minha analises",
+  "displayName": "analises da proposta"
+}
