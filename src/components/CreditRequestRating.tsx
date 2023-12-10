@@ -5,7 +5,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { CalculatorIcon } from "../assets/icons/Calculator";
 import { CaretRightIcon } from "../assets/icons/CaretRight";
 import { CurrencyCircleDollar } from "../assets/icons/CurrencyCircleDollar";
-import { useTarkenApi } from '../libs/tex-react-client-sdk';
+import { useTarkenApi } from '@tarkenag/tex-client-react-sdk';
 import { ICreditLimitRequestHistoryDTO, IPhaseDTO, ITransitionRuleDTO } from '../services/tarken-hub-api/tarken-crm-ticket.dtos';
 
 const Header = styled('span')`

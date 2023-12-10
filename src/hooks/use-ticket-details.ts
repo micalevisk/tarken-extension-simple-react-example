@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { ITicketDetailsDTO } from "../services/tarken-hub-api/tarken-crm-ticket.dtos";
-import { useTarkenApi } from "../libs/tex-react-client-sdk";
+import { useTarkenApi } from "@tarkenag/tex-client-react-sdk";
 
 export const useTicketDetails = (props: { ticketId: string }) => {
   const texAuth = useTarkenApi()

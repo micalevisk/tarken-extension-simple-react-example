@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { IPhaseDTO } from "../services/tarken-hub-api/tarken-crm-ticket.dtos";
-import { useTexContext, useTarkenApi } from "../libs/tex-react-client-sdk";
+import { useTexContext, useTarkenApi } from "@tarkenag/tex-client-react-sdk";
 import { CreditRequestRating } from "./CreditRequestRating";
 import { CreditRequestCustomerCashflowSummary } from "./CreditRequestCustomerCashFlow";
 import { CreditRequestFeedbacks } from "./CreditRequestFeedbacks";
