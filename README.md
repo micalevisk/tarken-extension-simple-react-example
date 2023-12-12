@@ -1,6 +1,18 @@
 > [!NOTE]  
 > This is a basic web app made for [Tarken](https://tarken.ag) Extension platform.
 
+
+### Preview
+
+<details>
+  <summary>Extension demo</summary>
+  
+[demo.webm](https://github.com/micalevisk/tarken-extension-simple-react-example/assets/13461315/1ed31347-583b-4c54-a4cf-fd633dfae9c7)
+  
+</details>
+
+---
+
 ### Install and get ready with TEx CLI
 
 ```bash
