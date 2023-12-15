@@ -18,7 +18,7 @@
     "@mui/lab": "^5.0.0-alpha.155",
     "@mui/material": "^5.14.20",
     "@tanstack/react-query": "^5.13.4",
-    "@tarkenag/tex-client-react-sdk": "^0.0.2",
+    "@tarkenag/tex-client-react-sdk": "^0.0.3",
     "axios": "^1.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
