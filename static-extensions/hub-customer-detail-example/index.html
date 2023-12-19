@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Minha extensão</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@1/dist/tex-helper.js"></script>
+  <style>
+  body {
+    border-style: solid;
+    /* border-color: red; */
+  }
+  </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="waiting_auth">Esperando autenticação...</h1>
+      <h1 id="waiting_context">Esperando contexto...</h1>
+
+      <h1>Hello world!</h1>
+      <div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec nibh vulputate augue vestibulum ultrices in et eros. Sed tincidunt efficitur suscipit. Mauris in velit convallis, lacinia ex eget, dapibus lectus. Morbi non est tortor. Proin pulvinar ultrices odio, ut mattis felis pulvinar pellentesque. Suspendisse non gravida est. Nam malesuada auctor nisl, vitae porta nisi eleifend vitae. Quisque sit amet neque et tortor vestibulum dictum. Nulla orci quam, pretium id congue rutrum, facilisis et elit. Morbi eget eros tellus. Curabitur hendrerit pulvinar enim, a condimentum risus facilisis id. Nulla non dignissim ipsum, ut lacinia nisi. Pellentesque nulla felis, tincidunt nec velit vel, malesuada euismod sapien. Proin sit amet pharetra ligula, a lobortis arcu. Duis dignissim sagittis gravida.
+
+Etiam laoreet arcu lobortis nulla ultricies convallis. Phasellus non justo quis urna sollicitudin venenatis. Donec sed semper nisi. Praesent sed lacus sed justo vulputate dictum et ut turpis. Ut in tellus laoreet, malesuada metus non, mollis neque. Proin a condimentum ex. Maecenas tempus, arcu at condimentum pharetra, neque libero tincidunt neque, id pharetra nibh magna vitae quam. Sed placerat porttitor condimentum. Sed scelerisque porta augue eget tempus. Nullam sit amet leo lacinia diam commodo bibendum. Phasellus et arcu quis ipsum cursus aliquam. Vestibulum placerat ligula nisi, vitae congue leo maximus non. Nullam quis arcu vulputate, accumsan tortor vel, pellentesque felis.
+
+Aliquam turpis urna, euismod vitae augue id, ultrices posuere purus. Sed gravida ullamcorper aliquam. Sed fringilla diam sapien. Morbi ullamcorper fermentum nisl, eget porttitor lacus luctus non. Etiam sed felis vitae ipsum porta faucibus. Morbi ac turpis in risus faucibus luctus. Ut viverra interdum urna. Phasellus placerat augue velit, in dictum augue auctor vel. Sed lobortis justo non sagittis dapibus. Aliquam vel tristique sapien. Ut non ipsum urna. Suspendisse iaculis viverra dui ut pellentesque. Pellentesque suscipit gravida nisi nec rutrum. Pellentesque lobortis porta tempor. Fusce laoreet auctor nunc sed dapibus. Fusce porta nisi sed nunc porttitor, et sollicitudin neque aliquam.
+
+Fusce erat elit, sollicitudin ac mattis et, mollis non nunc. Nullam vestibulum nisi eu ex imperdiet, id dictum arcu vestibulum. Aenean rhoncus a magna quis luctus. Curabitur non risus id felis facilisis finibus nec sit amet dui. Praesent bibendum nisi sit amet massa dapibus, quis mollis quam dapibus. Cras in felis ut neque ultrices pretium. Ut vel purus nunc. Duis sit amet volutpat mauris, ut ultricies risus. Cras tincidunt sem lorem, ut convallis tortor rhoncus eu. Aliquam erat volutpat. Suspendisse potenti. Praesent et eros sed mauris molestie mattis id in lacus. In hac habitasse platea dictumst.
+
+Nam vel nunc efficitur, aliquam tortor ut, rhoncus justo. Proin tristique urna quis libero volutpat mollis. Fusce ac dolor eu mi lacinia mattis nec quis nunc. Nunc mauris erat, ultricies vitae augue nec, finibus consequat nibh. Pellentesque vulputate tortor vitae fermentum sodales. Sed convallis lectus vel massa tincidunt, vitae placerat urna scelerisque. Vestibulum dapibus vitae ligula sit amet lacinia. Nunc ac ultrices sem, gravida vehicula dui. Phasellus nec ante sit amet est rutrum cursus. Sed vel metus sit amet tellus sollicitudin tincidunt. Donec vel placerat ante. Nullam malesuada ultricies tempus. Fusce fringilla tellus eu felis ornare, et mollis massa egestas. Aenean ante quam, euismod sed ullamcorper sit amet, finibus ut nulla. Nulla a neque elementum nibh dapibus rhoncus. Maecenas eget turpis nisi.
+      </div>
+    </div>
+    <script type="module">
+      const waitingAuth$ = document.getElementById('waiting_auth')
+      const waitingContext$ = document.getElementById('waiting_context')
+
+      window.Tarken.tex.onAuthorized(
+        function onAuthorizedEventHandler(data) {
+          waitingAuth$.remove()
+          console.debug('authz dentro da extensão: ', data)
+        }
+      )
+
+      window.Tarken.tex.onContext(
+        function onContextEventHandler(data) {
+          waitingContext$.remove()
+          console.debug('contexto dentro da extensão: ', data)
+        }
+      )
+    </script>
+  </body>
+</html>
