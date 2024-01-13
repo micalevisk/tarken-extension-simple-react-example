@@ -8,17 +8,18 @@
       "urlPath": "/",
       "location": "workflow.ticket.type.credit-request.detail",
       "attributes": {
-        "entryLabel": "Análises",
+        "entryLabel": "Análises personalizadas",
         "description": "Exemplo do tutorial 2"
       },
       "queryParameters": {
+        "foo": "bar zz",
         "ticket_to_use": "{{ ticketId }}"
       }
     }
   ],
   "private": true,
-  "version": "0.0.2",
-  "apiVersion": "0.0.1",
+  "version": "0.0.1",
+  "apiVersion": "*",
   "vendorName": "Tarken B",
   "description": "exemplo simples do tutorial 2",
   "displayName": "tutorial 2"
