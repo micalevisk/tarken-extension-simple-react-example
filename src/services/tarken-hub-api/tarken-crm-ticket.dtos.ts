@@ -44,22 +44,16 @@ export interface ICreditLimitRequestHistoryDTO {
 
 export interface ICustomerCashflowDTO {
   [k: string]: unknown
-  inflows: {
-    agriculturalOperationalResult: {
-      balance: number
-      [k: string]: unknown
-    }
-    [k: string]: unknown
-  }
+  totalInflow: number
 }
 
 export interface IConsolidatedDebtsStatementsDTO {
   [k: string]: unknown
   shortTermFinancingResult: {
-    SCRValue: number
-    IRPFDebtsValue: number
-    inputEffectiveValue?: number
-    others?: number
+    SCRValue: { isEnabled: boolean, value: number }
+    IRPFDebtsValue: { isEnabled: boolean, value: number }
+    effectiveValue?: number
+    others?: { isEnabled: boolean, value: number  }
   }
 }
 

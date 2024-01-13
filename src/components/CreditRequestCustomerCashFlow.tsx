@@ -64,12 +64,12 @@ const CustomerCashflow: React.FC<{ customerId: string }> = ({ customerId }) => {
     queryKey: ['customer-cashflow', customerId],
     queryFn: () =>
       tarkenHubApi
-      .get<ICustomerCashflowDTO>('/customer-cashflow', {
-        params: {
-          customerId,
-        }
-      })
-      .then(res => res.data)
+        .get<ICustomerCashflowDTO>('/customer-cashflow', {
+          params: {
+            customerId,
+          }
+        })
+        .then(res => res.data)
   })
 
   if (isLoading) {
@@ -85,7 +85,7 @@ const CustomerCashflow: React.FC<{ customerId: string }> = ({ customerId }) => {
   return (
     <CustomerCashflowEntry
       title="Resultado operacional agrícola"
-      currencyValue={customerCashflow.inflows.agriculturalOperationalResult.balance}
+      currencyValue={customerCashflow.totalInflow}
     />
   )
 }
@@ -100,12 +100,12 @@ const CustomerConsolidatedDebtStatements: React.FC<{ customerId: string }> = ({ 
     queryKey: ['customer-consolidated-debts-statements', customerId],
     queryFn: () =>
       tarkenHubApi
-      .get<IConsolidatedDebtsStatementsDTO>('/consolidated-debts-statements', {
-        params: {
-          customerId,
-        }
-      })
-      .then(res => res.data)
+        .get<IConsolidatedDebtsStatementsDTO>('/consolidated-debts-statements', {
+          params: {
+            customerId,
+          }
+        })
+        .then(res => res.data)
   })
 
   if (isLoading) {
@@ -118,11 +118,11 @@ const CustomerConsolidatedDebtStatements: React.FC<{ customerId: string }> = ({ 
 
   const customerConsolidatedDebtStatements = data
 
-  const effectiveValue = customerConsolidatedDebtStatements.shortTermFinancingResult.inputEffectiveValue ??
+  const effectiveValue = customerConsolidatedDebtStatements.shortTermFinancingResult.effectiveValue ??
     (
-      (customerConsolidatedDebtStatements.shortTermFinancingResult.SCRValue ?? 0) +
-      (customerConsolidatedDebtStatements.shortTermFinancingResult.IRPFDebtsValue ?? 0) +
-      (customerConsolidatedDebtStatements.shortTermFinancingResult.others ?? 0)
+      (customerConsolidatedDebtStatements.shortTermFinancingResult.SCRValue.isEnabled ? customerConsolidatedDebtStatements.shortTermFinancingResult.SCRValue.value : 0) +
+      (customerConsolidatedDebtStatements.shortTermFinancingResult.IRPFDebtsValue.isEnabled ? customerConsolidatedDebtStatements.shortTermFinancingResult.IRPFDebtsValue.value : 0) +
+      (customerConsolidatedDebtStatements.shortTermFinancingResult.others?.isEnabled ? customerConsolidatedDebtStatements.shortTermFinancingResult.others.value : 0)
     )
 
   return (
