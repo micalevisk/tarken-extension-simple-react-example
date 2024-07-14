@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import { useTicketSearchParams } from './hooks/use-search-params'
 import { TicketDetails } from './components/TicketDetails'
-import { TexViewContainer } from  '@tarkenag/tex-client-react-sdk'
+import { TexViewContainer } from '@tarkenag/tex-client-react-sdk'
 
 
 const queryClient = new QueryClient({

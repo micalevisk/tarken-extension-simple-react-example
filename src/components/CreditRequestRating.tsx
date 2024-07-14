@@ -5,7 +5,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { CalculatorIcon } from "../assets/icons/Calculator";
 import { CaretRightIcon } from "../assets/icons/CaretRight";
 import { CurrencyCircleDollar } from "../assets/icons/CurrencyCircleDollar";
-import { useTarkenApi } from '@tarkenag/tex-client-react-sdk';
+import { useTarkenApi, useTexBridge } from '@tarkenag/tex-client-react-sdk';
 import { ICreditLimitRequestHistoryDTO, IPhaseDTO, ITransitionRuleDTO } from '../services/tarken-hub-api/tarken-crm-ticket.dtos';
 
 const Header = styled('span')`
@@ -72,6 +72,7 @@ const ApproveCreditRequestButton: React.FC<{
   }
 }> = (props) => {
   const texAuth = useTarkenApi()
+  const TexBridge = useTexBridge()
 
   const tarkenHubApi = texAuth.hub.httpClient
 
@@ -91,6 +92,12 @@ const ApproveCreditRequestButton: React.FC<{
   if (error || (!data && status !== 'pending')) {
     return <div>Algo deu errado ao buscar informações das transições do workflow</div>
   }
+
+  // TexBridge.operations.invoke("workflow.ticket:move", {
+  //   ticketId: props.ticket.id,
+  //   fromPhaseId: props.ticket.currentPhaseId,
+  //   toPhaseId: '123',
+  // })
 
   const workflowTransitionRules = data
   if (!workflowTransitionRules && !isLoading) {
