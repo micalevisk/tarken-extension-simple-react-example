@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/tarkenag/tex-schemas/v0/manifest.json",
-  "name": "tutorial-2-0oj-1",
+  "name": "simple-react-example-for-credit-limit-details-b5cp-",
+  "displayName": "simple-react-example-for-credit-limit-details",
   "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-react-example",
   "modules": [
     {
@@ -21,6 +22,5 @@
   "version": "0.0.1",
   "apiVersion": "*",
   "vendorName": "Tarken B",
-  "description": "exemplo simples do tutorial 2",
-  "displayName": "tutorial 2"
+  "description": "exemplo simples do tutorial 2"
 }
