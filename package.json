@@ -12,24 +12,24 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.1.1",
-    "@fontsource/roboto": "^5.1.1",
-    "@mui/icons-material": "^6.4.3",
-    "@mui/lab": "^6.0.0-beta.26",
-    "@mui/material": "^6.4.3",
-    "@tanstack/react-query": "^5.66.0",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/roboto": "^5.2.5",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/lab": "^6.0.0-beta.30",
+    "@mui/material": "^6.4.7",
+    "@tanstack/react-query": "^5.68.0",
     "@tarkenag/tex-client-react-sdk": "^0.6.11",
-    "axios": "^1.7.9",
+    "axios": "^1.8.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "cross-env": "^7.0.3",
     "rimraf": "^6.0.1",
-    "typescript": "5.7",
-    "vite": "^6.1.0"
+    "typescript": "5.8",
+    "vite": "^6.2.2"
   }
 }
