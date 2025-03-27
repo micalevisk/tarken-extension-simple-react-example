@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { useTexContext, useTarkenApi, useTexMetadata } from "@tarkenag/tex-client-react-sdk";
 
-import { IPhaseDTO } from "../services/tarken-hub-api/tarken-crm-ticket.dtos";
-import { useTexContext, useTarkenApi } from "@tarkenag/tex-client-react-sdk";
+import type { IPhaseDTO } from "../services/tarken-hub-api/tarken-crm-ticket.dtos";
 import { CreditRequestRating } from "./CreditRequestRating";
 import { CreditRequestCustomerCashflowSummary } from "./CreditRequestCustomerCashFlow";
 import { CreditRequestFeedbacks } from "./CreditRequestFeedbacks";
@@ -9,20 +9,26 @@ import { useTicketDetails } from "../hooks";
 
 const useTicketWorkflowPhases = (props: { ticketWorkflowId: string | undefined }) => {
   const texAuth = useTarkenApi()
+  const texAuthUnversioned = useTarkenApi({
+    hubVersion: 'none',
+  })
 
   const tarkenHubApi = texAuth.hub.httpClient
+
+  void texAuthUnversioned.hub.httpClient.get('/crm/workflows')
+  .then(console.debug, console.error)
 
   return useQuery({
     queryKey: ['workflow-phases', props?.ticketWorkflowId],
     enabled: !!props.ticketWorkflowId,
     queryFn: () =>
       tarkenHubApi
-      .get<IPhaseDTO[]>('/crm/phases', {
-        params: {
-          workflowId: props?.ticketWorkflowId,
-        }
-      })
-      .then(res => res.data)
+        .get<IPhaseDTO[]>('/crm/phases', {
+          params: {
+            workflowId: props?.ticketWorkflowId,
+          }
+        })
+        .then(res => res.data)
   })
 }
 
@@ -35,6 +41,7 @@ export const TicketDetails: React.FC<{ ticketId: string }> = ({ ticketId }) => {
   const ticketDetails$ = useTicketDetails({ ticketId })
   const workflowPhases$ = useTicketWorkflowPhases({ ticketWorkflowId: ticketDetails$.data?.workflowId })
   const ticketLocationContextData = useTicketContext();
+  const extensionMetadata = useTexMetadata();
 
   const ticketDetails = ticketDetails$.data
   const workflowPhases = workflowPhases$.data
@@ -47,7 +54,8 @@ export const TicketDetails: React.FC<{ ticketId: string }> = ({ ticketId }) => {
     console.error(workflowPhases$.error.message)
     return <div>Algo deu errado ao buscar informações da proposta</div>
   }
-  if (ticketDetails$.isLoading || !ticketDetails || !workflowPhases) {
+  if (ticketDetails$.isLoading || !ticketDetails || !workflowPhases || !extensionMetadata
+  ) {
     return <div>Buscando informações do ticket</div>
   }
 
@@ -62,6 +70,9 @@ export const TicketDetails: React.FC<{ ticketId: string }> = ({ ticketId }) => {
   }
 
   return <>
+    <h1>Environment: {extensionMetadata.environment}</h1>
+    <h1>TEx Version: {extensionMetadata.version}</h1>
+
     <CreditRequestRating ticket={ticket} workflow={workflow} />
 
     <CreditRequestCustomerCashflowSummary

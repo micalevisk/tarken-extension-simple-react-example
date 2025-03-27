@@ -19,7 +19,7 @@
     }
   ],
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "apiVersion": "*",
   "vendorName": "Tarken B",
   "description": "exemplo simples do tutorial 2"
