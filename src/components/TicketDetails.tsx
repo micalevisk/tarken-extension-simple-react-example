@@ -9,14 +9,15 @@ import { useTicketDetails } from "../hooks";
 
 const useTicketWorkflowPhases = (props: { ticketWorkflowId: string | undefined }) => {
   const texAuth = useTarkenApi()
-  const texAuthUnversioned = useTarkenApi({
-    hubVersion: 'none',
-  })
+  const texAuthUnversioned = useTarkenApi()
 
   const tarkenHubApi = texAuth.hub.httpClient
 
-  void texAuthUnversioned.hub.httpClient.get('/crm/workflows')
-  .then(console.debug, console.error)
+  if (props?.ticketWorkflowId) {
+    console.debug('fetching workflow details...')
+    void texAuthUnversioned.hub.httpClient.get(`/v1/crm/workflows/${props.ticketWorkflowId}`)
+    .then(console.debug, console.error)
+  }
 
   return useQuery({
     queryKey: ['workflow-phases', props?.ticketWorkflowId],
@@ -72,6 +73,7 @@ export const TicketDetails: React.FC<{ ticketId: string }> = ({ ticketId }) => {
   return <>
     <h1>Environment: {extensionMetadata.environment}</h1>
     <h1>TEx Version: {extensionMetadata.version}</h1>
+    <h1>Host: {extensionMetadata.hostOrigin}</h1>
 
     <CreditRequestRating ticket={ticket} workflow={workflow} />
 
